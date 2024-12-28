@@ -1,0 +1,49 @@
+research_task:
+  name: "Research Professors and Labs"
+  description: >
+    Search for relevant information from {university} about {topic}.
+    Provide a list of professors or labs along with their URLs
+    that are actively working on this topic at the specified university.
+  expected_output: >
+    - A list of professors
+    - A list of labs
+    - Relevant links/URLs
+    - Contact information email of the professors
+  # The agent field references the key/identifier of the agent in agents.yaml 
+  # or the @agent method in your CrewBase class. 
+  agent: researcher
+
+  # (optional) Tools your agent will use for this task.
+  # If you want the agent to have specific tools for web searches, add them here.
+  # tools:
+  #   - my_search_tool
+
+  # (optional) Whether this task runs asynchronously.
+  # Setting it to True allows the next task to proceed while this one is still running.
+  # async_execution: False
+
+  # (optional) Provide a dictionary of configuration values specific to this task.
+  # These can be custom parameters or other data your agent might need.
+  # config:
+  #   max_retries: 3
+  #   search_depth: 2
+  #   allow_internet: True
+
+  # (optional) If you’d like to save the results of this task to a file,
+  # specify the path and whether directories should be automatically created.
+  # output_file: "outputs/research_{university}_{topic}.md"
+  # create_directory: True
+
+  # (optional) Use a callback function to run some logic after the task completes.
+  # callback: my_callback_function
+
+  # (optional) Reference the outputs of other tasks for context. This is useful
+  # if you want to feed the outputs of multiple tasks into this one.
+  # context:
+  #   - another_task
+  #   - some_other_task
+
+  # (optional) If you need guaranteed structured data, you can enforce a Pydantic model.
+  # output_pydantic: MyResearchModel
+  # or use a JSON-based structure:
+  # output_json: MyResearchModel
