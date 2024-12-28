@@ -9,12 +9,24 @@ warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
 def run():
     """
-    Run the crew.
+    Run the crew with user-provided input.
     """
+    # Prompt the user for input at runtime
+    topic = input("Enter the topic: ")
+    university = input("Enter your university: ")
+    resume = input("Enter your resume: ")
+
+    # Create the inputs dictionary from user input
     inputs = {
-        'topic': 'robotics, AI Agent',
-        'university': 'UT Austin',
-        'resume': 'Experience in Python, ML, Basic Robotics club, etc.',
+        'topic': topic,
+        'university': university,
+        'resume': resume,
     }
+    
+    # Kick off your AI dev crew with these inputs
     LatestAiDevelopment().crew().kickoff(inputs=inputs)
 
+
+
+if __name__ == '__main__':
+    run()

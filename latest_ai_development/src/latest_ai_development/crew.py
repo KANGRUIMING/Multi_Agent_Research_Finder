@@ -32,12 +32,14 @@ class LatestAiDevelopment():
 			
 		)
 
-#	@agent
-#	def reporting_analyst(self) -> Agent:
-#		return Agent(
-#			config=self.agents_config['reporting_analyst'],
-#			verbose=True
-#		)
+
+	@agent
+	def chat_agent(self) -> Agent:
+		return Agent(
+			config=self.agents_config['chat_agent'],
+			verbose=True
+		)
+
 
 	@task
 	def research_task(self) -> Task:
@@ -46,12 +48,11 @@ class LatestAiDevelopment():
 			tools=[search],
 		)
 
-#	@task
-#	def reporting_task(self) -> Task:
-#		return Task(
-#			config=self.tasks_config['reporting_task'],
-#			output_file='report.md'
-#		)
+	@task
+	def chat_task(self) -> Task:
+		return Task(
+			config=self.tasks_config['chat_task'],
+		)
 
 	@crew
 	def crew(self) -> Crew:
@@ -61,5 +62,7 @@ class LatestAiDevelopment():
 			tasks=self.tasks, # Automatically created by the @task decorator
 			process=Process.sequential,
 			verbose=True,
+			#memory=True,
+			#planning=True
 			# process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
 		)
