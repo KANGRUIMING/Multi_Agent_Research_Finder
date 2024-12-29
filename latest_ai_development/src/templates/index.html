@@ -1,4 +1,3 @@
-<!-- templates/index.html -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,13 +28,14 @@
         <h2>Professors</h2>
         {% for prof in data.professors %}
           <div style="margin-bottom: 20px;">
-            <strong>Name:</strong> {{ prof_name }}<br>
-            <strong>Research Interests:</strong> {{ research_interests }}<br>
-            <strong>Email:</strong> {{ prof_email }}<br>
-            <strong>URL:</strong> <a href="{{ prof.url }}" target="_blank">{{ prof.url }}</a>
+            <strong>Name:</strong> {{ prof.name }}<br>
+            <strong>Research Interests:</strong> {{ prof.research_interests }}<br>
+            <strong>Email:</strong> {{ prof.contact_email }}<br>
+            <strong>URL:</strong> 
+            <a href="{{ prof.url }}" target="_blank">{{ prof.url }}</a>
             <br><br>
 
-            <!-- POST to /select with hidden fields for professor -->
+            <!-- Hidden fields for professor data -->
             <form action="/select" method="POST">
               <input type="hidden" name="prof_name" value="{{ prof.name }}">
               <input type="hidden" name="prof_email" value="{{ prof.contact_email }}">
@@ -51,10 +51,11 @@
           <div style="margin-bottom: 20px;">
             <strong>Name:</strong> {{ lab.name }}<br>
             <strong>Focus:</strong> {{ lab.focus }}<br>
-            <strong>URL:</strong> <a href="{{ lab.url }}" target="_blank">{{ lab.url }}</a>
+            <strong>URL:</strong> 
+            <a href="{{ lab.url }}" target="_blank">{{ lab.url }}</a>
             <br><br>
 
-            <!-- POST to /select with hidden fields for lab -->
+            <!-- Hidden fields for lab data -->
             <form action="/select" method="POST">
               <input type="hidden" name="lab_name" value="{{ lab.name }}">
               <input type="hidden" name="lab_url" value="{{ lab.url }}">
@@ -65,7 +66,7 @@
       {% endif %}
 
     {% else %}
-      <!-- If parsed_data is None or empty, fallback to raw AI result -->
+      <!-- If data is None or empty, fallback to raw AI result (if any) -->
       <h2>AI Result (Raw):</h2>
       <pre>{{ result }}</pre>
     {% endif %}

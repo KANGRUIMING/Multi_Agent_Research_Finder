@@ -12,6 +12,7 @@ research_task:
   agent: researcher
   output_file: outputs/research_info.json
   create_directory: true
+  
 
 # chat_task:
 #   name: "User Satisfaction Chat"
