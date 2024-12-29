@@ -6,11 +6,12 @@ research_task:
     Provide a list of professors or labs along with their URLs
     that are actively working on this topic.
   expected_output: >
-    - A list of professors and their research interests
-    - A list of labs
-    - Relevant links/URLs
-    - Contact information email of the professors
+    A valid JSON object matching the specified Pydantic model, with:
+    - A list of professors (name, research_interests, contact_email, url)
+    - A list of labs (name, focus, url)
   agent: researcher
+  output_file: outputs/research_info.json
+  create_directory: true
 
 # chat_task:
 #   name: "User Satisfaction Chat"

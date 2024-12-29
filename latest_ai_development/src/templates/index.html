@@ -1,21 +1,14 @@
 <!-- templates/index.html -->
-
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <title>Crew AI Web UI</title>
 </head>
 <body>
     <h1>Crew AI Project</h1>
 
-    {% if result %}
-        <h2>Result</h2>
-        <div style="white-space: pre-wrap;">
-            {{ result }}
-        </div>
-    {% endif %}
-
+    <!-- Form for user input -->
     <form method="POST" action="/">
         <label for="topic">Topic:</label><br>
         <input type="text" id="topic" name="topic"><br><br>
@@ -28,5 +21,53 @@
 
         <input type="submit" value="Submit">
     </form>
+
+    <hr>
+
+    {% if data %}
+      {% if data.professors %}
+        <h2>Professors</h2>
+        {% for prof in data.professors %}
+          <div style="margin-bottom: 20px;">
+            <strong>Name:</strong> {{ prof_name }}<br>
+            <strong>Research Interests:</strong> {{ research_interests }}<br>
+            <strong>Email:</strong> {{ prof_email }}<br>
+            <strong>URL:</strong> <a href="{{ prof.url }}" target="_blank">{{ prof.url }}</a>
+            <br><br>
+
+            <!-- POST to /select with hidden fields for professor -->
+            <form action="/select" method="POST">
+              <input type="hidden" name="prof_name" value="{{ prof.name }}">
+              <input type="hidden" name="prof_email" value="{{ prof.contact_email }}">
+              <button type="submit">Select {{ prof.name }}</button>
+            </form>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if data.labs %}
+        <h2>Labs</h2>
+        {% for lab in data.labs %}
+          <div style="margin-bottom: 20px;">
+            <strong>Name:</strong> {{ lab.name }}<br>
+            <strong>Focus:</strong> {{ lab.focus }}<br>
+            <strong>URL:</strong> <a href="{{ lab.url }}" target="_blank">{{ lab.url }}</a>
+            <br><br>
+
+            <!-- POST to /select with hidden fields for lab -->
+            <form action="/select" method="POST">
+              <input type="hidden" name="lab_name" value="{{ lab.name }}">
+              <input type="hidden" name="lab_url" value="{{ lab.url }}">
+              <button type="submit">Select {{ lab.name }}</button>
+            </form>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+    {% else %}
+      <!-- If parsed_data is None or empty, fallback to raw AI result -->
+      <h2>AI Result (Raw):</h2>
+      <pre>{{ result }}</pre>
+    {% endif %}
 </body>
 </html>
