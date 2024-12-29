@@ -12,18 +12,18 @@ research_task:
     - Contact information email of the professors
   agent: researcher
 
-chat_task:
-  name: "User Satisfaction Chat"
-  description: >
-    Ask the user if they are satisfied with the list of professors and labs.
-    If not, prompt them to provide more detailed information about their preferences.
-    If yes, provide the contact information of the selected professor.
-  expected_output: >
-    - User satisfaction with the research results
-    - Additional details if needed
-    - Final selection of a professor or lab
-    - Confirmation of the choice
-    - If Satisfied: Provide contact information of the selected professor
-    - If Not Satisfied: Prompt for more details until satisfaction
-  human_input: true
-  agent: chat_agent
+# chat_task:
+#   name: "User Satisfaction Chat"
+#   description: >
+#     Ask the user if they are satisfied with the list of professors and labs.
+#     If not, prompt them to provide more detailed information about their preferences.
+#     If yes, provide the contact information of the selected professor.
+#   expected_output: >
+#     - User satisfaction with the research results
+#     - Additional details if needed
+#     - Final selection of a professor or lab
+#     - Confirmation of the choice
+#     - If Satisfied: Provide contact information of the selected professor
+#     - If Not Satisfied: Prompt for more details until satisfaction
+#   human_input: false  # This task does not require human input
+#   agent: chat_agent

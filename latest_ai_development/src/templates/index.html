@@ -1,0 +1,32 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Crew AI Web UI</title>
+</head>
+<body>
+    <h1>Crew AI Project</h1>
+
+    {% if result %}
+        <h2>Result</h2>
+        <div style="white-space: pre-wrap;">
+            {{ result }}
+        </div>
+    {% endif %}
+
+    <form method="POST" action="/">
+        <label for="topic">Topic:</label><br>
+        <input type="text" id="topic" name="topic"><br><br>
+
+        <label for="university">University:</label><br>
+        <input type="text" id="university" name="university"><br><br>
+
+        <label for="resume">Resume:</label><br>
+        <textarea id="resume" name="resume" rows="4" cols="50"></textarea><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

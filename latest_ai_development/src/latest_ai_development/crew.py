@@ -29,17 +29,14 @@ class LatestAiDevelopment():
 			config=self.agents_config['researcher'],
 			verbose=True,
 			tools=[search]
-			
 		)
 
-
-	@agent
-	def chat_agent(self) -> Agent:
-		return Agent(
-			config=self.agents_config['chat_agent'],
-			verbose=True
-		)
-
+	# @agent
+	# def chat_agent(self) -> Agent:
+	# 	return Agent(
+	# 		config=self.agents_config['chat_agent'],
+	# 		verbose=True
+	# 	)
 
 	@task
 	def research_task(self) -> Task:
@@ -48,11 +45,11 @@ class LatestAiDevelopment():
 			tools=[search],
 		)
 
-	@task
-	def chat_task(self) -> Task:
-		return Task(
-			config=self.tasks_config['chat_task'],
-		)
+	# @task
+	# def chat_task(self) -> Task:
+	# 	return Task(
+	# 		config=self.tasks_config['chat_task'],
+	# 	)
 
 	@crew
 	def crew(self) -> Crew:
