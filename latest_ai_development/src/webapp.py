@@ -1,23 +1,42 @@
-import json
-from flask import Flask, render_template, request
+import uuid
+from flask import Flask, render_template, request, session
 from latest_ai_development.crew import LatestAiDevelopment
 from pydantic import ValidationError
 
 app = Flask(__name__)
 
+# Required for using session
+app.secret_key = "REPLACE_WITH_A_STRONG_SECRET_KEY"
+
+# In-memory store: { user_id: {"professors": [...], "labs": [...], "raw_result": "..."}}
+app_data_store = {}
+
 @app.route("/", methods=["GET", "POST"])
 def index():
     """
     Main route:
-      - On POST, calls your Crew AI with user inputs (topic, university, resume).
-      - Attempts to parse out 'professors' and 'labs' from the AI result,
-        then writes them to 'outputs/research_info.json'.
-      - After that (or on GET), loads 'outputs/research_info.json' to display
-        any saved professors/labs in the template.
+      1) If a user_id is not in the session, create one.
+      2) Ensure there's an entry in app_data_store for this user.
+      3) On POST, call the Crew AI and store the result in memory for this user.
+      4) Pass the user's data to the template for display.
     """
-    parsed_data = None
-    raw_result = None
+    # 1) Identify the user via session
+    user_id = session.get("user_id")
+    if not user_id:
+        user_id = str(uuid.uuid4())  # Generate a unique ID
+        session["user_id"] = user_id
 
+    # 2) Ensure an entry exists in app_data_store for this user
+    if user_id not in app_data_store:
+        app_data_store[user_id] = {
+            "professors": [],
+            "labs": [],
+            "raw_result": None
+        }
+
+    user_data = app_data_store[user_id]
+
+    # 3) If POST, call the Crew AI with the user’s inputs
     if request.method == "POST":
         topic = request.form.get("topic", "")
         university = request.form.get("university", "")
@@ -31,11 +50,11 @@ def index():
 
         crew_instance = LatestAiDevelopment().crew()
         try:
-            # Call your Crew AI
             result = crew_instance.kickoff(inputs=inputs)
-            raw_result = str(result)  # For fallback display
+            # Store the entire raw output for fallback display
+            user_data["raw_result"] = str(result)
 
-            # Attempt to extract 'professors' and 'labs' from the CrewOutput
+            # Attempt to extract 'professors' & 'labs' from the CrewOutput
             try:
                 professors = result["professors"]
             except KeyError:
@@ -46,47 +65,29 @@ def index():
             except KeyError:
                 labs = []
 
-            # If we got any professors or labs, save them to the JSON file
-            if professors or labs:
-                data_to_write = {
-                    "professors": professors,
-                    "labs": labs
-                }
-                with open("outputs/research_info.json", "w", encoding="utf-8") as f:
-                    json.dump(data_to_write, f, indent=4)
+            # Update the user's in-memory data
+            user_data["professors"] = professors
+            user_data["labs"] = labs
 
         except ValidationError as e:
-            raw_result = f"Error validating AI output: {str(e)}"
-        # You can add more exception handling if needed.
+            user_data["raw_result"] = f"Error validating AI output: {str(e)}"
+        # Additional exception handling can be done here
 
-    # Now, whether GET or POST, read from 'outputs/research_info.json'
-    try:
-        with open("outputs/research_info.json", "r", encoding="utf-8") as f:
-            file_data = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError):
-        # If the file doesn't exist or has invalid JSON, we default to an empty dict
-        file_data = {}
-
-    # Safely extract professors/labs from the file
-    professors = file_data.get("professors", [])
-    labs = file_data.get("labs", [])
-
-    # If we have any data, store it for the template
-    if professors or labs:
-        parsed_data = {
-            "professors": professors,
-            "labs": labs
-        }
-
-    # Render the template with either parsed_data or raw_result fallback
-    return render_template("index.html", data=parsed_data, result=raw_result)
-
+    # 4) Pass the user's data to the template
+    return render_template(
+        "index.html",
+        data={
+            "professors": user_data["professors"],
+            "labs": user_data["labs"],
+        },
+        result=user_data["raw_result"]
+    )
 
 @app.route("/select", methods=["POST"])
 def select():
     """
     Captures 'Select' button presses (professors or labs).
-    Reads the hidden fields from the form and displays a simple message.
+    Reads the hidden fields posted from the form and displays a confirmation.
     """
     prof_name = request.form.get("prof_name")
     prof_email = request.form.get("prof_email")

@@ -5,7 +5,7 @@
     <title>Crew AI Web UI</title>
 </head>
 <body>
-    <h1>Crew AI Project</h1>
+    <h1>Crew AI Project (In-Memory Session)</h1>
 
     <!-- Form for user input -->
     <form method="POST" action="/">
@@ -23,7 +23,8 @@
 
     <hr>
 
-    {% if data %}
+    <!-- If we have data, show professors/labs. Else show the raw result or fallback -->
+    {% if data.professors or data.labs %}
       {% if data.professors %}
         <h2>Professors</h2>
         {% for prof in data.professors %}
@@ -31,11 +32,11 @@
             <strong>Name:</strong> {{ prof.name }}<br>
             <strong>Research Interests:</strong> {{ prof.research_interests }}<br>
             <strong>Email:</strong> {{ prof.contact_email }}<br>
-            <strong>URL:</strong> 
+            <strong>URL:</strong>
             <a href="{{ prof.url }}" target="_blank">{{ prof.url }}</a>
             <br><br>
 
-            <!-- Hidden fields for professor data -->
+            <!-- POST to /select with hidden fields for professor -->
             <form action="/select" method="POST">
               <input type="hidden" name="prof_name" value="{{ prof.name }}">
               <input type="hidden" name="prof_email" value="{{ prof.contact_email }}">
@@ -51,11 +52,11 @@
           <div style="margin-bottom: 20px;">
             <strong>Name:</strong> {{ lab.name }}<br>
             <strong>Focus:</strong> {{ lab.focus }}<br>
-            <strong>URL:</strong> 
+            <strong>URL:</strong>
             <a href="{{ lab.url }}" target="_blank">{{ lab.url }}</a>
             <br><br>
 
-            <!-- Hidden fields for lab data -->
+            <!-- POST to /select with hidden fields for lab -->
             <form action="/select" method="POST">
               <input type="hidden" name="lab_name" value="{{ lab.name }}">
               <input type="hidden" name="lab_url" value="{{ lab.url }}">
@@ -64,9 +65,7 @@
           </div>
         {% endfor %}
       {% endif %}
-
     {% else %}
-      <!-- If data is None or empty, fallback to raw AI result (if any) -->
       <h2>AI Result (Raw):</h2>
       <pre>{{ result }}</pre>
     {% endif %}
