@@ -1,0 +1,45 @@
+{
+  "professors": [
+    {
+      "name": "Joydeep Biswas",
+      "research_interests": "Robotics, Computer Vision, and AI",
+      "contact_email": "biswas@cs.utexas.edu",
+      "url": "https://www.cs.utexas.edu/~biswas/"
+    },
+    {
+      "name": "Philipp Krähenbühl",
+      "research_interests": "Deep Learning and Computer Vision",
+      "contact_email": "pkrahenbuehl@cs.utexas.edu",
+      "url": "https://www.cs.utexas.edu/~pkrahenbuehl/"
+    },
+    {
+      "name": "Dana Ballard",
+      "research_interests": "Computer Vision and Machine Learning",
+      "contact_email": "ballard@cs.utexas.edu",
+      "url": "https://www.cs.utexas.edu/{username}"
+    },
+    {
+      "name": "Lijia Liu",
+      "research_interests": "Artificial Intelligence and Human-Computer Interaction",
+      "contact_email": "lijialiu@cs.utexas.edu",
+      "url": "https://www.cs.utexas.edu/{username}"
+    }
+  ],
+  "labs": [
+    {
+      "name": "AI-Lab",
+      "focus": "Machine Learning, Knowledge Representation and Reasoning, Robotics",
+      "url": "https://www.cs.utexas.edu/~ai-lab/"
+    },
+    {
+      "name": "Embodied Cognition Lab",
+      "focus": "Cognitive Systems and AI",
+      "url": "https://www.cs.utexas.edu/embodied-cognition-lab"
+    },
+    {
+      "name": "Computer Vision Group",
+      "focus": "Research in the Principles of Vision and Perception in Machines",
+      "url": "https://www.cs.utexas.edu/computer-vision-group"
+    }
+  ]
+}

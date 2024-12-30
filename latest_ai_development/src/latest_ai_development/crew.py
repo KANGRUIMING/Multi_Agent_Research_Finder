@@ -6,11 +6,8 @@ from dotenv import load_dotenv
 from crewai_tools import SerperDevTool
 from pydantic import BaseModel
 from typing import List
-from pathlib import Path
 import yaml
 import json
-import datetime
-
 
 # Load environment variables
 load_dotenv()
@@ -21,7 +18,7 @@ search = SerperDevTool(
     n_results=2,
 )
 
-# Define Pydantic models
+# Existing Pydantic models for the main listing
 class Professor(BaseModel):
     name: str
     research_interests: str
@@ -37,7 +34,33 @@ class ResearchInfo(BaseModel):
     professors: List[Professor]
     labs: List[Lab]
 
-# Configuration file paths
+# --- NEW MODELS BELOW ---
+
+class Publication(BaseModel):
+    title: str
+    summary: str
+
+class Project(BaseModel):
+    name: str
+    description: str
+
+class SpecificProfessorInfo(BaseModel):
+    """
+    For deeper professor/lab research.
+    """
+    publications: List[Publication]
+    projects: List[Project]
+    courses: List[str]
+
+class CoverLetterOutput(BaseModel):
+    """
+    For email subject/body + cover letter.
+    """
+    email_subject: str
+    email_body: str
+    cover_letter: str
+
+# Paths to YAML configs
 agents_config = 'config/agents.yaml'
 tasks_config = 'config/tasks.yaml'
 
@@ -53,32 +76,66 @@ class LatestAiDevelopment():
             tools=[search]
         )
 
- 
+    @agent
+    def deeper_researcher(self) -> Agent:
+        return Agent(
+            config=self.agents_config['deeper_researcher'],
+            verbose=True,
+            tools=[search]
+        )
+
+    @agent
+    def cover_letter_agent(self) -> Agent:
+        return Agent(
+            config=self.agents_config['cover_letter_agent'],
+            verbose=True,
+            tools=[]
+        )
 
     @task
     def research_task(self) -> Task:
-        task = Task(
+        # The main listing of professors/labs
+        t = Task(
             config=self.tasks_config['research_task'],
             tools=[search],
         )
-        task.output_json = ResearchInfo
-        return task
+        # Ensure JSON matches ResearchInfo model
+        t.output_json = ResearchInfo
+        return t
+
+    @task
+    def professor_research_task(self) -> Task:
+        """
+        Deeper research on a single professor/lab.
+        We'll just pass the professor name & URL as input.
+        """
+        t = Task(
+            config=self.tasks_config['professor_research_task'],
+            tools=[search],
+        )
+        # Now enforce the SpecificProfessorInfo model
+        t.output_json = SpecificProfessorInfo
+        return t
+
+    @task
+    def cover_letter_task(self) -> Task:
+        """
+        Takes the student's resume + professor/lab details, 
+        returns a JSON with email_subject, email_body, cover_letter.
+        """
+        t = Task(
+            config=self.tasks_config['cover_letter_task'],
+        )
+        # Enforce the CoverLetterOutput model
+        t.output_json = CoverLetterOutput
+        return t
 
     @crew
     def crew(self) -> Crew:
         """Creates the LatestAiDevelopment crew"""
         return Crew(
-            agents=self.agents,  # Automatically created by the @agent decorator
-            tasks=self.tasks,    # Automatically created by the @task decorator
+            agents=self.agents,   # researcher, deeper_researcher, cover_letter_agent
+            tasks=self.tasks,     # research_task, professor_research_task, cover_letter_task
             process=Process.sequential,
             verbose=True,
         )
-
-if __name__ == "__main__":
-    crew_instance = LatestAiDevelopment()
-    crew = crew_instance.crew()
-    result = crew.kickoff()
-
-    # Optionally, print the JSON output
-    if result.pydantic:
-        print(result.pydantic.json(indent=2))

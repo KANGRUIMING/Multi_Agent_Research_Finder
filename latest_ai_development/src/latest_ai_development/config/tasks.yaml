@@ -1,6 +1,7 @@
-# src/latest_ai_development/config/tasks.yaml
+# tasks.yaml
 
 research_task:
+  task_id: research_task
   description: >
     Search for relevant information from {university} about {topic}.
     Provide a list of professors or labs along with their URLs
@@ -12,20 +13,32 @@ research_task:
   agent: researcher
   output_file: outputs/research_info.json
   create_directory: true
-  
 
-# chat_task:
-#   name: "User Satisfaction Chat"
-#   description: >
-#     Ask the user if they are satisfied with the list of professors and labs.
-#     If not, prompt them to provide more detailed information about their preferences.
-#     If yes, provide the contact information of the selected professor.
-#   expected_output: >
-#     - User satisfaction with the research results
-#     - Additional details if needed
-#     - Final selection of a professor or lab
-#     - Confirmation of the choice
-#     - If Satisfied: Provide contact information of the selected professor
-#     - If Not Satisfied: Prompt for more details until satisfaction
-#   human_input: false  # This task does not require human input
-#   agent: chat_agent
+professor_research_task:
+  task_id: professor_research_task
+  description: >
+    Given a professor or lab name and URL, research their research interests, projects, 
+    publications, and courses. 
+  expected_output: >
+    A valid JSON object with keys 'publications', 'projects', 'courses' 
+    (each a list of objects or strings).
+    Output must be valid JSON. For publications, produce a list of objects with title and summary. 
+    For projects, produce a list of objects with name and description. For courses, produce a list of strings. No extra text outside of JSON.
+  agent: deeper_researcher
+  output_file: outputs/specific_info.json
+  create_directory: true
+
+cover_letter_task:
+  task_id: cover_letter_task
+  description: >
+    Given the chosen professor's details, plus the student's resume text {resume}, 
+    write a succinct, professional email subject, email body, 
+    and a separate cover letter. 
+  expected_output: >
+    A valid JSON object matching the specified Pydantic model, with:
+    -"email_subject": "...",
+    -"email_body": "...",
+    -"cover_letter": "..."
+  agent: cover_letter_agent
+  output_file: outputs/cover_letter.json
+  create_directory: true
