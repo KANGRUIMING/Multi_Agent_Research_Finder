@@ -2,6 +2,7 @@ import uuid
 from flask import Flask, render_template, request, session
 from latest_ai_development.crew import LatestAiDevelopment
 from latest_ai_development_copy.crew import LatestAiDevelopment_copy
+from latest_ai_development_copy_copy.crew import LatestAiDevelopment_copy_copy
 from pydantic import ValidationError
 
 app = Flask(__name__)
@@ -46,6 +47,7 @@ def index():
         resume = request.form.get("resume", "")
 
         user_data["university"] = university
+        user_data["resume"] = resume
 
         inputs = {
             "topic": topic,
@@ -102,6 +104,7 @@ def select():
     prof_email = request.form.get("prof_email")
     lab_name = request.form.get("lab_name")
     lab_url = request.form.get("lab_url")
+    resume = user_data.get("resume", "")
 
     if prof_name and prof_email:
         inputs = {
@@ -109,10 +112,14 @@ def select():
             "university": university,
             "lab_name": lab_name,
         }
+        letterinputs = {"resume": resume}
         try:
             crew_instance_copy = LatestAiDevelopment_copy().crew()
             result = crew_instance_copy.kickoff(inputs= inputs)
             raw_result = str(result)  # store raw output if needed
+            crew_instance_copy_copy = LatestAiDevelopment_copy_copy().crew()
+            copy_result = crew_instance_copy_copy.kickoff(inputs= letterinputs)
+            letter_result = str(copy_result)
         except ValidationError as e:
             raw_result = f"Error validating AI output: {str(e)}"
         selection_message = f"You selected professor: {prof_name}, email: {prof_email}"
@@ -125,8 +132,15 @@ def select():
         selection_message = "Nothing selected or missing data."
 
 
-    return f"<h2>{raw_result}</h2><p><a href='/'>Back to Home</a></p>"
-
+    return f"""
+            <h2>Selection Message:</h2>
+            <p>{selection_message}</p>
+            <h2>Raw Result:</h2>
+            <pre>{raw_result}</pre>
+            <h2>Letter Result:</h2>
+            <pre>{letter_result}</pre>
+            <p><a href="/">Back to Home</a></p>
+        """
 
 if __name__ == "__main__":
     app.run(debug=True)

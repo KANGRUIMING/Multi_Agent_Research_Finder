@@ -1,27 +1,45 @@
 {
   "professors": [
     {
-      "name": "Gopal Gupta",
-      "research_interests": "Artificial Intelligence, Machine Learning",
+      "name": "Dr. Gopal Gupta",
+      "research_interests": "Machine learning, AI, knowledge representation",
       "contact_email": "Gopal.Gupta@utdallas.edu",
       "url": "https://machine-learning.utdallas.edu/affiliated-ut-dallas-faculty/"
     },
     {
-      "name": "Doug DeGroot",
-      "research_interests": "Artificial Intelligence, Machine Learning, Data Science",
-      "contact_email": "",
+      "name": "Dr. Feng Chen",
+      "research_interests": "Data mining, machine learning, AI applications",
+      "contact_email": "feng.chen@utdallas.edu",
+      "url": "https://caiml.utdallas.edu/"
+    },
+    {
+      "name": "Dr. Doug DeGroot",
+      "research_interests": "AI, machine learning, systems programming",
+      "contact_email": "degroot@utdallas.edu",
+      "url": "https://caiml.utdallas.edu/"
+    },
+    {
+      "name": "Dr. Anurag Nagar",
+      "research_interests": "Machine learning, AI in healthcare",
+      "contact_email": "nagar@utdallas.edu",
+      "url": "https://caiml.utdallas.edu/"
+    },
+    {
+      "name": "Dr. Ovidiu Daescu",
+      "research_interests": "AI in robotics, computational geometry",
+      "contact_email": "daescu@utdallas.edu",
       "url": "https://caiml.utdallas.edu/"
     }
   ],
   "labs": [
     {
       "name": "Center for Applied AI & Machine Learning",
-      "focus": "Research and applications of AI and Machine Learning",
+      "focus": "Application of AI and machine learning in various domains",
       "url": "https://caiml.utdallas.edu/"
     },
     {
       "name": "Center for Machine Learning",
-      "focus": "Machine Learning research across various domains",
+      "focus": "Research in machine learning algorithms and applications",
       "url": "https://machine-learning.utdallas.edu/"
     }
   ]

@@ -41,3 +41,16 @@ deeper_research_task:
   output_file: outputs/professor_detail.json
   create_directory: true
 
+cover_letter_task:
+  description: >
+    Given professor's details, plus the student's resume text {resume}, 
+    write a succinct, professional email subject, email body, 
+    and a separate cover letter. 
+  expected_output: >
+    A valid JSON object matching the specified Pydantic model, with:
+    -"email_subject": "...",
+    -"email_body": "...",
+    -"cover_letter": "..."
+  agent: cover_letter_agent
+  output_file: outputs/cover_letter.json
+  create_directory: true

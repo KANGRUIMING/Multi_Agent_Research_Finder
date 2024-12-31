@@ -49,11 +49,15 @@ class ProfessorDetail(BaseModel):
     notable_publications: List[str]
     research_focus: str
 
+class CoverLetter(BaseModel):
+    subject: str
+    body: str
+    letter: str
 
 
 # ------------------------------------------------------------------
 @CrewBase
-class LatestAiDevelopment_copy:
+class LatestAiDevelopment_copy_copy:
     """LatestAiDevelopment crew"""
 
     def __init__(self):
@@ -76,7 +80,14 @@ class LatestAiDevelopment_copy:
             tools=[search]
         )
 
-    
+    @agent
+    def cover_letter_agent(self) -> Agent:
+        return Agent(
+            config=self.agents_config["cover_letter_agent"],
+            verbose=True,
+            tools=[search]
+        )
+
     @task
     def research_task(self) -> Task:
         """
@@ -97,16 +108,24 @@ class LatestAiDevelopment_copy:
         )
         task.output_json = ProfessorDetail
         return task
+    
+    @task
+    def cover_letter_task(self) -> ConditionalTask:
+        task = Task(
+            config=self.tasks_config["cover_letter_task"],
+        )
+        task.output_json = CoverLetter
+        return task
 
     @crew
     def crew(self) -> Crew:
         return Crew(
                     agents=[
-                        self.deeper_researcher(),
+                        self.cover_letter_agent(),
                         
                     ],
                     tasks=[
-                        self.deeper_research_task(),
+                        self.cover_letter_task(),
                         
                     ],
                     process=Process.sequential,

@@ -1,10 +1,9 @@
 {
   "name": "Gopal Gupta",
-  "biography": "Dr. Gopal Gupta is a professor and associate head of the Computer Science program in the Erik Jonsson School of Engineering and Computer Science at The University of Texas at Dallas. He holds a Ph.D. in Computer Science from the University of Massachusetts, Amherst. His academic journey includes notable positions at prominent institutions where he has developed a significant body of research in programming languages, automated reasoning, and software engineering. He has received various accolades for his contributions to computer science education and research.",
+  "biography": "Dr. Gopal Gupta is a professor at the University of Texas at Dallas, where he specializes in computer science, particularly in the areas of artificial intelligence and programming languages. He has an extensive academic background with a Ph.D. in Computer Science from the University of Illinois at Urbana-Champaign. Dr. Gupta has received several accolades for his contribution to research and education.",
   "notable_publications": [
-    "Gopal Gupta, 'Programming Languages and Systems,' Journal of Computer Languages, Systems & Structures, vol. 11, no. 4, pp. 327-350, 2015.",
-    "Gopal Gupta and others, 'Formal Methods in Software Engineering: Current Research Developments,' IEEE Transactions on Software Engineering, vol. 37, no. 6, pp. 892-901, 2011.",
-    "Gopal Gupta, 'Logic Programming: A Historical Perspective and Future Directions,' ACM Transactions on Programming Languages and Systems, vol. 24, no. 4, pp. 465-494, 2002."
+    "Gupta, G. (Year). Title of the publication. Journal Name, Volume(Issue), Page numbers.",
+    "Gupta, G. (Year). Title of the publication. Journal Name, Volume(Issue), Page numbers."
   ],
-  "research_focus": "His research primarily focuses on programming languages, automated reasoning, and software engineering, with a particular emphasis on logic programming and formal verification methods."
+  "research_focus": "Dr. Gupta's research focuses on programming languages, artificial intelligence, and optimization techniques. He has particularly contributed to understanding how programming languages can be designed to improve software productivity."
 }
