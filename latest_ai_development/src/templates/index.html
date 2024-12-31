@@ -36,11 +36,35 @@
           <strong>URL:</strong> <a href="{{ prof.url }}" target="_blank">{{ prof.url }}</a>
           <br><br>
 
-          <!-- POST to /select with hidden fields for professor -->
+          <!-- POST to /select with *visible* fields for professor -->
           <form method="POST" action="/select">
-            <input type="hidden" name="prof_name" value="{{ prof.name }}">
-            <input type="hidden" name="prof_email" value="{{ prof.contact_email }}">
-            <input type="hidden" name="prof_url" value="{{ prof.url }}">
+            <label for="prof_name_{{ loop.index }}">Professor Name:</label>
+            <input 
+              type="text" 
+              id="prof_name_{{ loop.index }}" 
+              name="prof_name" 
+              value="{{ prof.name }}"
+            >
+            <br><br>
+
+            <label for="prof_email_{{ loop.index }}">Email:</label>
+            <input 
+              type="text" 
+              id="prof_email_{{ loop.index }}" 
+              name="prof_email" 
+              value="{{ prof.contact_email }}"
+            >
+            <br><br>
+
+            <label for="prof_url_{{ loop.index }}">URL:</label>
+            <input 
+              type="text" 
+              id="prof_url_{{ loop.index }}" 
+              name="prof_url" 
+              value="{{ prof.url }}"
+            >
+            <br><br>
+
             <button type="submit">Select {{ prof.name }}</button>
           </form>
         </div>
@@ -56,10 +80,26 @@
           <strong>URL:</strong> <a href="{{ lab.url }}" target="_blank">{{ lab.url }}</a>
           <br><br>
 
-          <!-- POST to /select with hidden fields for lab -->
+          <!-- POST to /select with *visible* fields for lab -->
           <form method="POST" action="/select">
-            <input type="hidden" name="lab_name" value="{{ lab.name }}">
-            <input type="hidden" name="lab_url" value="{{ lab.url }}">
+            <label for="lab_name_{{ loop.index }}">Lab Name:</label>
+            <input 
+              type="text" 
+              id="lab_name_{{ loop.index }}" 
+              name="lab_name" 
+              value="{{ lab.name }}"
+            >
+            <br><br>
+
+            <label for="lab_url_{{ loop.index }}">URL:</label>
+            <input 
+              type="text" 
+              id="lab_url_{{ loop.index }}" 
+              name="lab_url" 
+              value="{{ lab.url }}"
+            >
+            <br><br>
+
             <button type="submit">Select {{ lab.name }}</button>
           </form>
         </div>

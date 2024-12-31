@@ -1,23 +1,24 @@
 {
   "publications": [
     {
-      "title": "Responsible Robotics: A Socio-Ethical Addition To Robotics Courses",
-      "summary": "This publication discusses the integration of socio-ethical considerations into robotics education."
+      "title": "Language Based Software Engineering",
+      "summary": "A discussion on software engineering methods that leverage language-based approaches published in the Sci. of Computer Programming Journal."
     },
     {
-      "title": "Robust and accurate long-term mobile robot localization",
-      "summary": "Focuses on approaches for improving localization accuracy of mobile robots in varying environments."
+      "title": "Gopal Gupta Fellowship In Computer Science",
+      "summary": "Details about the academic fellowship established for the benefit of the Erik Jonsson School of Engineering and Computer Science."
     }
   ],
   "projects": [
     {
-      "name": "Terrain Adaptive Navigation",
-      "description": "A project aimed at enabling robots to navigate and reason about various terrains effectively."
+      "name": "CLARISSA",
+      "description": "Consistent Logical Automated Reasoning for Integrated System Software Assurance, a project led by Gopal Gupta with Doug DeGroot as a co-PI."
     }
   ],
   "courses": [
-    "CS 378H Autonomous Driving - Honors",
-    "CS 109 Essentials of AI for Life and Society",
-    "CS 388U Planning, Search and Reasoning Under Uncertainty"
+    "Artificial Intelligence",
+    "Machine Learning",
+    "Natural Language Processing",
+    "Data Mining"
   ]
 }

@@ -134,8 +134,16 @@ class LatestAiDevelopment():
     def crew(self) -> Crew:
         """Creates the LatestAiDevelopment crew"""
         return Crew(
-            agents=self.agents,   # researcher, deeper_researcher, cover_letter_agent
-            tasks=self.tasks,     # research_task, professor_research_task, cover_letter_task
+            agents=[
+                self.researcher(),
+                self.deeper_researcher(),
+                self.cover_letter_agent(),
+            ],
+            tasks=[
+                self.research_task(),
+                self.professor_research_task(),
+                self.cover_letter_task(),
+            ],
             process=Process.sequential,
             verbose=True,
         )
