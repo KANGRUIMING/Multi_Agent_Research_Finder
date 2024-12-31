@@ -13,14 +13,30 @@ research_task:
 
 deeper_research_task:
   description: >
-    Perform detailed research on {prof_name}. Provide background, key publications,
-    achievements, or relevant notes about them.
+    Thoroughly research the academic background, publications, and achievements of the professor 
+    named {prof_name} and their associated lab {lab_name} from {university}. Your goal is to produce a 
+    comprehensive overview covering:
+    - The professor's biography (e.g., background, education, notable honors)
+    - Their key areas of research
+    - Significant or representative publications (include titles, publication years, and any citation information if available)
+    - Ongoing research projects (provide project titles, brief summaries, and mention collaborators)
+    - Relevant courses the professor teaches
+    - The professor's contact email
+    - Typical profiles or backgrounds of students working with this professor
+
+    Use reliable sources such as university or institutional websites, Google Scholar, or peer-reviewed journals. 
+    If data is not available, provide either an empty string or an empty array, depending on the field. 
+    When your research is complete, return only the JSON object following the specified structure below.
   expected_output: >
     A valid JSON object matching the ProfessorDetail model:
       -"name": "...",
       -"biography": "...",
       -"notable_publications": [...],
       -"research_focus": "..."
+      -"ongoing_projects": [...]
+      -"relevant_courses": [...]
+      -"contact_email": "..."
+      -"students_profile": [...]
   agent: deeper_researcher
   output_file: outputs/professor_detail.json
   create_directory: true

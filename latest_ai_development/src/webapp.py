@@ -32,7 +32,9 @@ def index():
         app_data_store[user_id] = {
             "professors": [],
             "labs": [],
-            "raw_result": None
+            "raw_result": None,
+            "university": None,
+            "resume": None,
         }
 
     user_data = app_data_store[user_id]
@@ -42,6 +44,8 @@ def index():
         topic = request.form.get("topic", "")
         university = request.form.get("university", "")
         resume = request.form.get("resume", "")
+
+        user_data["university"] = university
 
         inputs = {
             "topic": topic,
@@ -86,30 +90,42 @@ def index():
 
 @app.route("/select", methods=["POST"])
 def select():
+    user_id = session.get("user_id")
+    user_data = app_data_store.get(user_id, {})
+
     """
     Captures 'Select' button presses (professors or labs).
     Reads the hidden fields posted from the form and displays a confirmation.
     """
+    university = user_data.get("university", "")
     prof_name = request.form.get("prof_name")
     prof_email = request.form.get("prof_email")
     lab_name = request.form.get("lab_name")
     lab_url = request.form.get("lab_url")
 
     if prof_name and prof_email:
-        crew_instance_copy = LatestAiDevelopment_copy().crew()
+        inputs = {
+            "prof_name": prof_name,
+            "university": university,
+            "lab_name": lab_name,
+        }
         try:
-            result = crew_instance_copy.kickoff(inputs={"prof_name": prof_name})
-            # Store the entire raw output for fallback display
-            raw_result = str(result)
+            crew_instance_copy = LatestAiDevelopment_copy().crew()
+            result = crew_instance_copy.kickoff(inputs= inputs)
+            raw_result = str(result)  # store raw output if needed
         except ValidationError as e:
             raw_result = f"Error validating AI output: {str(e)}"
         selection_message = f"You selected professor: {prof_name}, email: {prof_email}"
     elif lab_name and lab_url:
         selection_message = f"You selected lab: {lab_name}, URL: {lab_url}"
+        crew_instance_copy = LatestAiDevelopment_copy().crew()
+        result = crew_instance_copy.kickoff(inputs= inputs)
+        raw_result = str(result)
     else:
         selection_message = "Nothing selected or missing data."
 
-    return f"<h2>{selection_message}</h2><p><a href='/'>Back to Home</a></p>"
+
+    return f"<h2>{raw_result}</h2><p><a href='/'>Back to Home</a></p>"
 
 
 if __name__ == "__main__":

@@ -49,18 +49,7 @@ class ProfessorDetail(BaseModel):
     notable_publications: List[str]
     research_focus: str
 
-# ------------------------------------------------------------------
-# Condition function for deeper research
-def has_deeper_research_input(output: TaskOutput) -> bool:
-    """
-    Check if we have 'prof_name' in the inputs.
-    If we do, run deeper_research_task. If not, skip.
-    
-    Important: This is NOT user input necessarily — 
-    it can be set programmatically from the Flask route 
-    after we figure out which professor was selected.
-    """
-    return bool(output.inputs.get("prof_name", ""))
+
 
 # ------------------------------------------------------------------
 @CrewBase

@@ -1,57 +1,27 @@
 {
   "professors": [
     {
-      "name": "Dr. Gopal Gupta",
-      "research_interests": "Artificial Intelligence, Machine Learning, Logic Programming",
+      "name": "Gopal Gupta",
+      "research_interests": "Artificial Intelligence, Machine Learning",
       "contact_email": "Gopal.Gupta@utdallas.edu",
       "url": "https://machine-learning.utdallas.edu/affiliated-ut-dallas-faculty/"
     },
     {
-      "name": "Dr. Doug DeGroot",
-      "research_interests": "Machine Learning, Natural Language Processing, Data Science",
-      "contact_email": "deggroot@utdallas.edu",
-      "url": "https://caiml.utdallas.edu/"
-    },
-    {
-      "name": "Dr. Feng Chen",
-      "research_interests": "Big Data Analytics, AI Algorithms, Social Network Analysis",
-      "contact_email": "feng.chen@utdallas.edu",
-      "url": "https://caiml.utdallas.edu/"
-    },
-    {
-      "name": "Dr. Anurag Nagar",
-      "research_interests": "AI, Computer Vision, Robotics",
-      "contact_email": "nagar@utdallas.edu",
-      "url": "https://caiml.utdallas.edu/"
-    },
-    {
-      "name": "Dr. Ovidiu Daescu",
-      "research_interests": "Algorithms, AI, Operations Research",
-      "contact_email": "ovidiu@utdallas.edu",
-      "url": "https://caiml.utdallas.edu/"
-    },
-    {
-      "name": "Dr. Xiaohu Guo",
-      "research_interests": "Machine Learning, Deep Learning, Computer Vision",
-      "contact_email": "xiaohu.guo@utdallas.edu",
-      "url": "https://caiml.utdallas.edu/"
-    },
-    {
-      "name": "Dr. Yunhui Guo",
-      "research_interests": "AI Algorithms, Data Mining, Machine Learning",
-      "contact_email": "yunhui.guo@utdallas.edu",
+      "name": "Doug DeGroot",
+      "research_interests": "Artificial Intelligence, Machine Learning, Data Science",
+      "contact_email": "",
       "url": "https://caiml.utdallas.edu/"
     }
   ],
   "labs": [
     {
       "name": "Center for Applied AI & Machine Learning",
-      "focus": "Research in machine learning, AI, and applications across various domains.",
+      "focus": "Research and applications of AI and Machine Learning",
       "url": "https://caiml.utdallas.edu/"
     },
     {
       "name": "Center for Machine Learning",
-      "focus": "Interdisciplinary research and applications in machine learning.",
+      "focus": "Machine Learning research across various domains",
       "url": "https://machine-learning.utdallas.edu/"
     }
   ]

@@ -1,10 +1,10 @@
 {
-  "name": "Dr. Doug DeGroot",
-  "biography": "Dr. Doug DeGroot is a Professor of Instruction in the Department of Computer Science at the University of Texas at Dallas. He also serves as the Director of the Center for Applied AI & Machine Learning. With a robust background in computer science, Dr. DeGroot focuses on the application of machine learning techniques in various domains.",
+  "name": "Gopal Gupta",
+  "biography": "Dr. Gopal Gupta is a professor and associate head of the Computer Science program in the Erik Jonsson School of Engineering and Computer Science at The University of Texas at Dallas. He holds a Ph.D. in Computer Science from the University of Massachusetts, Amherst. His academic journey includes notable positions at prominent institutions where he has developed a significant body of research in programming languages, automated reasoning, and software engineering. He has received various accolades for his contributions to computer science education and research.",
   "notable_publications": [
-    "DeGroot, D., & Cheng, L. (2020). Leveraging Machine Learning for Enhanced Data Analysis. Journal of Data Science.",
-    "DeGroot, D. (2021). Advances in Artificial Intelligence: Applications and Challenges. AI Journal.",
-    "DeGroot, D., et al. (2019). Integrating Machine Learning into the Curriculum: Challenges and Strategies. Proceedings of the ACM SIGCSE Symposium."
+    "Gopal Gupta, 'Programming Languages and Systems,' Journal of Computer Languages, Systems & Structures, vol. 11, no. 4, pp. 327-350, 2015.",
+    "Gopal Gupta and others, 'Formal Methods in Software Engineering: Current Research Developments,' IEEE Transactions on Software Engineering, vol. 37, no. 6, pp. 892-901, 2011.",
+    "Gopal Gupta, 'Logic Programming: A Historical Perspective and Future Directions,' ACM Transactions on Programming Languages and Systems, vol. 24, no. 4, pp. 465-494, 2002."
   ],
-  "research_focus": "Dr. DeGroot's research focuses on artificial intelligence, specifically the integration of machine learning techniques for improved data analysis and educational methodologies in computer science."
+  "research_focus": "His research primarily focuses on programming languages, automated reasoning, and software engineering, with a particular emphasis on logic programming and formal verification methods."
 }
