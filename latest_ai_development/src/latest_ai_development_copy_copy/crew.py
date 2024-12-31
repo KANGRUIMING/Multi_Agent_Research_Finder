@@ -57,7 +57,7 @@ class CoverLetter(BaseModel):
 
 # ------------------------------------------------------------------
 @CrewBase
-class LatestAiDevelopment_copy_copy:
+class Crew3:
     """LatestAiDevelopment crew"""
 
     def __init__(self):

@@ -66,7 +66,7 @@ def is_professor_selected(output: TaskOutput) -> bool:
 
 # ------------------------------------------------------------------
 @CrewBase
-class LatestAiDevelopment:
+class Crew1:
     """LatestAiDevelopment crew"""
 
     def __init__(self):

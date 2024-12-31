@@ -1,9 +1,9 @@
 {
-  "name": "Gopal Gupta",
-  "biography": "Dr. Gopal Gupta is a professor at the University of Texas at Dallas, where he specializes in computer science, particularly in the areas of artificial intelligence and programming languages. He has an extensive academic background with a Ph.D. in Computer Science from the University of Illinois at Urbana-Champaign. Dr. Gupta has received several accolades for his contribution to research and education.",
+  "name": "Doug DeGroot",
+  "biography": "Doug DeGroot is a Professor of Instruction in the Department of Computer Science at the University of Texas at Dallas. He serves as the Director of the Center for Applied AI & Machine Learning. Doug has a strong background in artificial intelligence and machine learning, with a focus on developing tools and products that leverage these technologies. He has received various accolades for his contributions to the field.",
   "notable_publications": [
-    "Gupta, G. (Year). Title of the publication. Journal Name, Volume(Issue), Page numbers.",
-    "Gupta, G. (Year). Title of the publication. Journal Name, Volume(Issue), Page numbers."
+    "An approach to using actual audio and video clips of real humans to construct artificial, conversational agents and bots.",
+    "Machine Learning Techniques for Bioinformatics Applications."
   ],
-  "research_focus": "Dr. Gupta's research focuses on programming languages, artificial intelligence, and optimization techniques. He has particularly contributed to understanding how programming languages can be designed to improve software productivity."
+  "research_focus": "Artificial intelligence, machine learning, and their applications in developing conversational agents and bioinformatics."
 }

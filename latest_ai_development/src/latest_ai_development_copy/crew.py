@@ -53,7 +53,7 @@ class ProfessorDetail(BaseModel):
 
 # ------------------------------------------------------------------
 @CrewBase
-class LatestAiDevelopment_copy:
+class Crew2:
     """LatestAiDevelopment crew"""
 
     def __init__(self):
