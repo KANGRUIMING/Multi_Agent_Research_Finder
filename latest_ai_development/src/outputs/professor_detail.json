@@ -1,0 +1,10 @@
+{
+  "name": "Dr. Doug DeGroot",
+  "biography": "Dr. Doug DeGroot is a Professor of Instruction in the Department of Computer Science at the University of Texas at Dallas. He also serves as the Director of the Center for Applied AI & Machine Learning. With a robust background in computer science, Dr. DeGroot focuses on the application of machine learning techniques in various domains.",
+  "notable_publications": [
+    "DeGroot, D., & Cheng, L. (2020). Leveraging Machine Learning for Enhanced Data Analysis. Journal of Data Science.",
+    "DeGroot, D. (2021). Advances in Artificial Intelligence: Applications and Challenges. AI Journal.",
+    "DeGroot, D., et al. (2019). Integrating Machine Learning into the Curriculum: Challenges and Strategies. Proceedings of the ACM SIGCSE Symposium."
+  ],
+  "research_focus": "Dr. DeGroot's research focuses on artificial intelligence, specifically the integration of machine learning techniques for improved data analysis and educational methodologies in computer science."
+}

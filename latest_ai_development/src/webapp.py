@@ -1,6 +1,7 @@
 import uuid
 from flask import Flask, render_template, request, session
 from latest_ai_development.crew import LatestAiDevelopment
+from latest_ai_development_copy.crew import LatestAiDevelopment_copy
 from pydantic import ValidationError
 
 app = Flask(__name__)
@@ -95,6 +96,13 @@ def select():
     lab_url = request.form.get("lab_url")
 
     if prof_name and prof_email:
+        crew_instance_copy = LatestAiDevelopment_copy().crew()
+        try:
+            result = crew_instance_copy.kickoff(inputs={"prof_name": prof_name})
+            # Store the entire raw output for fallback display
+            raw_result = str(result)
+        except ValidationError as e:
+            raw_result = f"Error validating AI output: {str(e)}"
         selection_message = f"You selected professor: {prof_name}, email: {prof_email}"
     elif lab_name and lab_url:
         selection_message = f"You selected lab: {lab_name}, URL: {lab_url}"
