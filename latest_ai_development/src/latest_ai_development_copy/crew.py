@@ -129,14 +129,33 @@ class LatestAiDevelopment:
         return Crew(
             agents=[
                 self.researcher(),
-                
+                self.deeper_researcher(),
             ],
             tasks=[
                 self.research_task(),
-                
+                self.deeper_research_task(),
             ],
             process=Process.sequential,
             verbose=True,
         )
 
 
+if __name__ == "__main__":
+    # For direct CLI testing
+    crew_instance = LatestAiDevelopment().crew()
+    result = crew_instance.kickoff(
+        inputs={
+            "topic": "Machine Learning",
+            "university": "MIT",
+            "prof_name": "Professor John Doe"  # If this is blank, deeper task will skip
+        }
+    )
+
+    if result.pydantic:
+        print("=== Final Structured Output ===")
+        # result.pydantic might be a *list* of Pydantic objects if multiple tasks run
+        # or a nested dictionary. This depends on your version of crewAI.
+        print(result.pydantic.json(indent=2))
+    else:
+        print("=== Raw Output ===")
+        print(result)

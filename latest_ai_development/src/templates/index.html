@@ -1,73 +1,114 @@
+<!-- templates/index.html -->
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Crew AI Web UI</title>
+  <meta charset="UTF-8">
+  <title>Crew AI Web UI</title>
 </head>
 <body>
-    <h1>Crew AI Project (In-Memory Session)</h1>
+  <h1>Crew AI Project</h1>
 
-    <!-- Form for user input -->
-    <form method="POST" action="/">
-        <label for="topic">Topic:</label><br>
-        <input type="text" id="topic" name="topic"><br><br>
+  <!-- Form for user input -->
+  <form method="POST" action="/">
+    <label for="topic">Topic:</label><br>
+    <input type="text" id="topic" name="topic"><br><br>
 
-        <label for="university">University:</label><br>
-        <input type="text" id="university" name="university"><br><br>
+    <label for="university">University:</label><br>
+    <input type="text" id="university" name="university"><br><br>
 
-        <label for="resume">Resume:</label><br>
-        <textarea id="resume" name="resume" rows="4" cols="50"></textarea><br><br>
+    <label for="resume">Resume:</label><br>
+    <textarea id="resume" name="resume" rows="4" cols="50"></textarea><br><br>
 
-        <input type="submit" value="Submit">
-    </form>
+    <input type="submit" value="Submit">
+  </form>
 
-    <hr>
+  <hr>
 
-    <!-- If we have data, show professors/labs. Else show the raw result or fallback -->
-    {% if data.professors or data.labs %}
-      {% if data.professors %}
-        <h2>Professors</h2>
-        {% for prof in data.professors %}
-          <div style="margin-bottom: 20px;">
-            <strong>Name:</strong> {{ prof.name }}<br>
-            <strong>Research Interests:</strong> {{ prof.research_interests }}<br>
-            <strong>Email:</strong> {{ prof.contact_email }}<br>
-            <strong>URL:</strong>
-            <a href="{{ prof.url }}" target="_blank">{{ prof.url }}</a>
+  <!-- If we got professors or labs, display them -->
+  {% if data.professors or data.labs %}
+    {% if data.professors %}
+      <h2>Professors</h2>
+      {% for prof in data.professors %}
+        <div style="margin-bottom:20px;">
+          <strong>Name:</strong> {{ prof.name }}<br>
+          <strong>Research Interests:</strong> {{ prof.research_interests }}<br>
+          <strong>Email:</strong> {{ prof.contact_email }}<br>
+          <strong>URL:</strong> <a href="{{ prof.url }}" target="_blank">{{ prof.url }}</a>
+          <br><br>
+
+          <!-- POST to /select with *visible* fields for professor -->
+          <form method="POST" action="/select">
+            <label for="prof_name_{{ loop.index }}">Professor Name:</label>
+            <input 
+              type="text" 
+              id="prof_name_{{ loop.index }}" 
+              name="prof_name" 
+              value="{{ prof.name }}"
+            >
             <br><br>
 
-            <!-- POST to /select with hidden fields for professor -->
-            <form action="/select" method="POST">
-              <input type="hidden" name="prof_name" value="{{ prof.name }}">
-              <input type="hidden" name="prof_email" value="{{ prof.contact_email }}">
-              <button type="submit">Select {{ prof.name }}</button>
-            </form>
-          </div>
-        {% endfor %}
-      {% endif %}
-
-      {% if data.labs %}
-        <h2>Labs</h2>
-        {% for lab in data.labs %}
-          <div style="margin-bottom: 20px;">
-            <strong>Name:</strong> {{ lab.name }}<br>
-            <strong>Focus:</strong> {{ lab.focus }}<br>
-            <strong>URL:</strong>
-            <a href="{{ lab.url }}" target="_blank">{{ lab.url }}</a>
+            <label for="prof_email_{{ loop.index }}">Email:</label>
+            <input 
+              type="text" 
+              id="prof_email_{{ loop.index }}" 
+              name="prof_email" 
+              value="{{ prof.contact_email }}"
+            >
             <br><br>
 
-            <!-- POST to /select with hidden fields for lab -->
-            <form action="/select" method="POST">
-              <input type="hidden" name="lab_name" value="{{ lab.name }}">
-              <input type="hidden" name="lab_url" value="{{ lab.url }}">
-              <button type="submit">Select {{ lab.name }}</button>
-            </form>
-          </div>
-        {% endfor %}
-      {% endif %}
-    {% else %}
-      <h2>AI Result (Raw):</h2>
-      <pre>{{ result }}</pre>
+            <label for="prof_url_{{ loop.index }}">URL:</label>
+            <input 
+              type="text" 
+              id="prof_url_{{ loop.index }}" 
+              name="prof_url" 
+              value="{{ prof.url }}"
+            >
+            <br><br>
+
+            <button type="submit">Select {{ prof.name }}</button>
+          </form>
+        </div>
+      {% endfor %}
     {% endif %}
+
+    {% if data.labs %}
+      <h2>Labs</h2>
+      {% for lab in data.labs %}
+        <div style="margin-bottom:20px;">
+          <strong>Name:</strong> {{ lab.name }}<br>
+          <strong>Focus:</strong> {{ lab.focus }}<br>
+          <strong>URL:</strong> <a href="{{ lab.url }}" target="_blank">{{ lab.url }}</a>
+          <br><br>
+
+          <!-- POST to /select with *visible* fields for lab -->
+          <form method="POST" action="/select">
+            <label for="lab_name_{{ loop.index }}">Lab Name:</label>
+            <input 
+              type="text" 
+              id="lab_name_{{ loop.index }}" 
+              name="lab_name" 
+              value="{{ lab.name }}"
+            >
+            <br><br>
+
+            <label for="lab_url_{{ loop.index }}">URL:</label>
+            <input 
+              type="text" 
+              id="lab_url_{{ loop.index }}" 
+              name="lab_url" 
+              value="{{ lab.url }}"
+            >
+            <br><br>
+
+            <button type="submit">Select {{ lab.name }}</button>
+          </form>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% else %}
+    <!-- Fallback: display raw AI output or instructions if no professors/labs found -->
+    <h2>AI Result (Raw):</h2>
+    <pre>{{ result }}</pre>
+  {% endif %}
 </body>
 </html>

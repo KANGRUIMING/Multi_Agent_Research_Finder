@@ -1,0 +1,34 @@
+{
+  "professors": [
+    {
+      "name": "Gopal Gupta",
+      "research_interests": "Artificial Intelligence, Machine Learning, Programming Languages",
+      "contact_email": "Gopal.Gupta@utdallas.edu",
+      "url": "https://cs.utdallas.edu/people/faculty/gopal-gupta/"
+    },
+    {
+      "name": "Ovidiu Daescu",
+      "research_interests": "Algorithms, Computational Geometry, Artificial Intelligence",
+      "contact_email": "Ovidiu.Daescu@utdallas.edu",
+      "url": "https://cs.utdallas.edu/people/faculty/ovidiu-daescu/"
+    },
+    {
+      "name": "Farokh Bastani",
+      "research_interests": "Artificial Intelligence, Machine Learning, Software Engineering",
+      "contact_email": "farokh.bastani@utdallas.edu",
+      "url": "https://cs.utdallas.edu/people/faculty/farokh-bastani/"
+    }
+  ],
+  "labs": [
+    {
+      "name": "Center for Applied AI & Machine Learning",
+      "focus": "Research and applications in AI & Machine Learning",
+      "url": "https://caiml.utdallas.edu/"
+    },
+    {
+      "name": "Center for Machine Learning",
+      "focus": "Machine Learning research and interdisciplinary applications",
+      "url": "https://machine-learning.utdallas.edu/"
+    }
+  ]
+}

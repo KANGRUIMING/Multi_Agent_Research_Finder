@@ -1,0 +1,69 @@
+{
+  "professors": [
+    {
+      "name": "Hal Abelson",
+      "research_interests": "Artificial Intelligence, Computer Science Education",
+      "contact_email": "hal@mit.edu",
+      "url": "https://www.csail.mit.edu/user/125"
+    },
+    {
+      "name": "Pulkit Agrawal",
+      "research_interests": "Robotics, Machine Learning, and Computer Vision",
+      "contact_email": "pulkit@mit.edu",
+      "url": "https://www.pulkitagrawal.com/"
+    },
+    {
+      "name": "Saman Amarasinghe",
+      "research_interests": "Machine Learning, Compilers, Architectures",
+      "contact_email": "saman@mit.edu",
+      "url": "https://www.csail.mit.edu/user/214"
+    },
+    {
+      "name": "Jacob Andreas",
+      "research_interests": "Natural Language Processing, Machine Learning",
+      "contact_email": "jaka@mit.edu",
+      "url": "https://people.csail.mit.edu/jaka/"
+    },
+    {
+      "name": "Regina Barzilay",
+      "research_interests": "Natural Language Processing, Machine Learning, Healthcare",
+      "contact_email": "regina@csail.mit.edu",
+      "url": "http://people.csail.mit.edu/regina/"
+    },
+    {
+      "name": "Stephen Bates",
+      "research_interests": "Machine Learning, Computer Vision, Robotics",
+      "contact_email": "stephenb@mit.edu",
+      "url": "http://web.mit.edu/stephenb/www/"
+    },
+    {
+      "name": "Sara Beery",
+      "research_interests": "Machine Learning, Computer Vision, Robotics",
+      "contact_email": "sbeery@mit.edu",
+      "url": "https://sbeery.github.io/"
+    },
+    {
+      "name": "Robert Berwick",
+      "research_interests": "Machine Learning, Linguistics, Artificial Intelligence",
+      "contact_email": "berwick@mit.edu",
+      "url": "http://www.aclweb.org/anthology/W/W23/W23-9005.pdf"
+    }
+  ],
+  "labs": [
+    {
+      "name": "MIT Computer Science and Artificial Intelligence Laboratory (CSAIL)",
+      "focus": "Research in various areas of computer science, focusing heavily on AI and machine learning techniques.",
+      "url": "https://www.csail.mit.edu/"
+    },
+    {
+      "name": "MIT Media Lab",
+      "focus": "Interdisciplinary research on the development of new technologies, including machine learning applications.",
+      "url": "https://www.media.mit.edu/"
+    },
+    {
+      "name": "Laboratory for Information and Decision Systems (LIDS)",
+      "focus": "Research on information and decision systems with applications in machine learning and artificial intelligence.",
+      "url": "http://lids.mit.edu/"
+    }
+  ]
+}
