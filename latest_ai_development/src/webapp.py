@@ -155,6 +155,7 @@ def select():
         # Suppose Crew3 needs the resume and any data from Crew2
         letterinputs_crew3 = {
             "resume": resume,
+            "prof_name": prof_name,
             "crew2_data": user_data.get("crew2_output", {})
         }
         crew3_instance = Crew3().crew()

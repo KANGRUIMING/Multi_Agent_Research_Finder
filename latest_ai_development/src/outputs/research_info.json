@@ -2,27 +2,33 @@
   "professors": [
     {
       "name": "Gopal Gupta",
-      "research_interests": "Artificial Intelligence, Machine Learning, Logic Programming",
+      "research_interests": "Artificial Intelligence, Machine Learning",
       "contact_email": "Gopal.Gupta@utdallas.edu",
       "url": "https://machine-learning.utdallas.edu/affiliated-ut-dallas-faculty/"
     },
     {
-      "name": "Doug DeGroot",
-      "research_interests": "Artificial Intelligence, Machine Learning, Data Science, Artificial Consciousness",
-      "contact_email": "unknown",
-      "url": "https://caiml.utdallas.edu/"
+      "name": "Vincent Ng",
+      "research_interests": "Natural Language Processing, Artificial Intelligence",
+      "contact_email": "vincent.ng@utdallas.edu",
+      "url": "https://cs.utdallas.edu/people/faculty/ng_vincent/"
+    },
+    {
+      "name": "Nicholas Ruozzi",
+      "research_interests": "Graphical Models, Machine Learning, Explainable AI",
+      "contact_email": "nicholas.ruozzi@utdallas.edu",
+      "url": "https://cs.utdallas.edu/people/faculty/ruozzi_nicholas/"
     }
   ],
   "labs": [
     {
-      "name": "Center for Machine Learning",
-      "focus": "Research and development in machine learning and artificial intelligence.",
-      "url": "https://machine-learning.utdallas.edu/"
+      "name": "Center for Applied AI & Machine Learning",
+      "focus": "Cutting-edge research in AI and Machine Learning.",
+      "url": "https://caiml.utdallas.edu/"
     },
     {
-      "name": "Center for Applied AI & Machine Learning",
-      "focus": "Applied AI research, including machine learning and artificial consciousness.",
-      "url": "https://caiml.utdallas.edu/"
+      "name": "Center for Machine Learning",
+      "focus": "Machine learning and its applications across various domains.",
+      "url": "https://machine-learning.utdallas.edu/"
     }
   ]
 }

@@ -43,7 +43,7 @@ deeper_research_task:
 
 cover_letter_task:
   description: >
-    Given professor's details, plus the student's resume text {resume}, 
+    Given {prof_name} professor's details, plus the student's resume text: [{resume}], 
     write a succinct, professional email subject, email body, 
     and a separate cover letter. 
   expected_output: >

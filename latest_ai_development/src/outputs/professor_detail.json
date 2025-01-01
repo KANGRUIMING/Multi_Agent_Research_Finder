@@ -1,9 +1,10 @@
 {
-  "name": "Doug DeGroot",
-  "biography": "Doug DeGroot is a Professor of Instruction in the Department of Computer Science at the University of Texas at Dallas. He serves as the Director of the Center for Applied AI & Machine Learning. Doug has a strong background in artificial intelligence and machine learning, with a focus on developing tools and products that leverage these technologies. He has received various accolades for his contributions to the field.",
+  "name": "Vincent Ng",
+  "biography": "Vincent Ng is a Professor in the Computer Science department at the University of Texas at Dallas (UTD). He holds a Ph.D. in Computer Science from Stanford University. His research primarily focuses on natural language processing, machine learning, and human language technology. He has received several accolades for his work, including best paper awards and grant funding for various research initiatives.",
   "notable_publications": [
-    "An approach to using actual audio and video clips of real humans to construct artificial, conversational agents and bots.",
-    "Machine Learning Techniques for Bioinformatics Applications."
+    "Ng, V., & Cardie, C. (2002). Improving machine learning approaches to coreference resolution. The Proceedings of the 40th Annual Meeting of the Association for Computational Linguistics.",
+    "Ng, V., & Lee, J. (1997). Integrating multiple knowledge sources for coreference resolution. Proceedings of the 35th Annual Meeting of the Association for Computational Linguistics.",
+    "Ng, V., & Seneff, S. (2006). The role of language in multimedia presentations: A challenge to communication design education. Journal of Visual Literacy."
   ],
-  "research_focus": "Artificial intelligence, machine learning, and their applications in developing conversational agents and bioinformatics."
+  "research_focus": "Natural Language Processing, Coreference Resolution, Machine Learning, Human Language Technology"
 }
